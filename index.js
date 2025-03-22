@@ -5,11 +5,13 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const { config } = require("dotenv");
 require("dotenv").config();
+const cors = require("cors");
 // declaring the app
 const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
+app.use(cors());
 
 const api = process.env.API_URL;
 
