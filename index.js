@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(morgan("tiny"));
 app.use(cors());
 
-const api = process.env.API_URL;
+const api = process.env.API_URL || "/api/v1"; // Use default if undefined
 
 // USER SCHEMA
 const userSchema = mongoose.Schema({
@@ -43,6 +43,21 @@ app.post(`${api}/users`, (req, res) => {
         success: false,
       });
     });
+});
+
+app.post(`${api}/login`, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await users.findOne({ email, password });
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    res.status(200).json({ message: "Login successful", user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Default Route (Fixes the 404 error) on Render
