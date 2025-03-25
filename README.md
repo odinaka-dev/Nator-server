@@ -76,19 +76,22 @@ Nator AI is built using **Node.js** and the **Express.js** framework. This serve
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/nator-ai-server.git
+   git clone [https://github.com/odinaka-dev/Nator-server.git]
    ```
 2. Navigate to the project folder:
    ```sh
-   cd nator-ai-server
+   cd nator-server
    ```
-3. Install dependencies:
+3. Install all dependencies:
    ```sh
    npm install
    ```
-4. Run the server:
+   [body-parser, cors, expressjs, morgan, bycrypt...]
+4. Run the server on your local host:
    ```sh
    nodemon index.js
+   termminal: server is running on http://localhost:3000
+   terminal: Database is connected
    ```
 
 ## Contribution
